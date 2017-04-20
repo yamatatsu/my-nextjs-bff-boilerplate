@@ -2,7 +2,7 @@ const { createServer } = require('http')
 const next = require('next')
 const routes = require('./routes')
 
-const port = 3000
+const port = 8000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 
