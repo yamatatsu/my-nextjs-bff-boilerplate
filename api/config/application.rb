@@ -30,7 +30,7 @@ module Api
     # CORS
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'localhost:3000' # TODO: set your bff server origin
+        origins 'localhost:8000' # TODO: set your bff server origin
         resource '*',
           :headers => :any,
           :methods => [:get, :post, :delete, :put, :patch, :options, :head],
