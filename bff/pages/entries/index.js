@@ -2,8 +2,10 @@ import Link from 'next/link'
 import 'isomorphic-fetch'
 
 export default class extends React.Component {
-  static async getInitialProps () {
-    const res = await fetch('http://localhost:3000/items')
+  static async getInitialProps ({ req }) {
+    const isServer = !!req
+    const host = isServer ? 'api' : 'localhost'
+    const res = await fetch(`http://${host}:3000/items`)
     const items = await res.json()
     return { items }
   }
@@ -16,10 +18,10 @@ export default class extends React.Component {
         <p>input your tell number</p>
         <ul>
           {this.props.items.map(item => (
-            <li>{item.id}: {item.name}</li>
+            <li key={item.id}>{item.id}: {item.name}</li>
           ))}
         </ul>
-        <Link href='/wallets?walletId=hoge' as='/wallets/hoge'>wallet</Link>
+        <Link href='/wallets?walletId=hoge' as='/wallets/hoge'><a>wallet</a></Link>
       </div>
     )
   }
