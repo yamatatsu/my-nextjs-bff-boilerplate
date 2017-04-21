@@ -1,2 +1,5 @@
+.cache
+.npm
 .next
 node_modules
+.bash_history
