@@ -13,7 +13,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: ./api.Dockerfile
+      dockerfile: ./api/Dockerfile
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     ports:
       - "3000:3000"
@@ -30,7 +30,7 @@ services:
   bff:
     build:
       context: .
-      dockerfile: ./bff.Dockerfile
+      dockerfile: ./bff/Dockerfile
     command: npm run dev
     ports:
       - "8000:8000"
