@@ -3,8 +3,8 @@ import 'isomorphic-fetch'
 
 export default class extends React.Component {
   static async getInitialProps ({ req }) {
-    const host = !!req ? 'api' : 'localhost'
-    return fetch(`http://${host}:3000/items`)
+    const origin = !!req ? 'http://api_proxy' : 'http://localhost:3000'
+    return fetch(`${origin}/items`)
       .then(res => res.json())
       .then(items => ({ items }))
   }
