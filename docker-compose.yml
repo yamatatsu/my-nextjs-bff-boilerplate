@@ -42,8 +42,17 @@ services:
       dockerfile: ./bff/Dockerfile
     command: npm run dev
     ports:
-      - "8000:8000"
+      - 80
     depends_on:
       - api_proxy
     volumes:
       - ./bff:/myapp
+
+  bff_proxy:
+    image: nginx:1.13
+    volumes:
+      - ./bff_proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "8000:80"
+    depends_on:
+      - bff
