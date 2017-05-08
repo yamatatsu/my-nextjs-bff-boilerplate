@@ -28,7 +28,7 @@ services:
       - ./api:/myapp
 
   api_proxy:
-    image: nginx:1.11
+    image: nginx:1.13
     volumes:
       - ./api_proxy/nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
