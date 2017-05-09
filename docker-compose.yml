@@ -11,9 +11,7 @@ services:
   #     service: password
 
   api:
-    build:
-      context: .
-      dockerfile: ./api/Dockerfile
+    build: ./api
     command: bundle exec rails s -p 80 -b '0.0.0.0'
     ports:
       - 80
@@ -37,9 +35,7 @@ services:
       - api
 
   bff:
-    build:
-      context: .
-      dockerfile: ./bff/Dockerfile
+    build: ./bff
     command: npm run dev
     ports:
       - 80

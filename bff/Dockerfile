@@ -7,6 +7,6 @@ RUN npm i -g yarn
 ENV APP_HOME /myapp
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
-ADD ./bff $APP_HOME
+ADD . $APP_HOME
 
 RUN yarn install
