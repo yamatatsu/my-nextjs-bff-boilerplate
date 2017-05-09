@@ -1,29 +1,29 @@
 version: '2'
 services:
-  # db:
-  #   image: mysql:5.7.17
-  #   ports:
-  #     - "3306:3306"
-  #   volumes:
-  #     - ./docker/mysql/volumes:/var/lib/mysql
-  #   extends:
-  #     file: ./docker/mysql/password.yml
-  #     service: password
+
+  db:
+    image: mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - db-data:/var/lib/mysql
+  redis:
+    image: redis:3.0.5
 
   api:
     build: ./api
     command: bundle exec rails s -p 80 -b '0.0.0.0'
     ports:
       - 80
-    environment:
-      RAILS_ENV: development
-    # extends:
-    #   file: ./docker/mysql/password.yml
-    #   service: password
-    # depends_on:
-    #   - db
     volumes:
       - ./api:/myapp
+    environment:
+      - RAILS_ENV=development
+      - DATABASE_URL=mysql2://db
+      - REDIS_HOST=redis
+    depends_on:
+      - db
+      - redis
 
   api_proxy:
     image: nginx:1.13
@@ -52,3 +52,7 @@ services:
       - "8000:80"
     depends_on:
       - bff
+
+volumes:
+  db-data:
+    driver: local
