@@ -22,5 +22,5 @@ rails db:seed_fu RAILS_ENV=development
 - [x] rails api server をサクッと構築
 - [x] ssr /w fetch
 - [x] docker
-- [ ] mysql
+- [x] mysql
 - [ ] awsへのデプロイを考える

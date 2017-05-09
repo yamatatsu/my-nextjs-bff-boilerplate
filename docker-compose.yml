@@ -1,6 +1,6 @@
-version: '2'
-services:
+version: '3'
 
+services:
   db:
     image: mysql
     environment:
