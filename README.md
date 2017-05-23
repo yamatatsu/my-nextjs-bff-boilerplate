@@ -1,3 +1,9 @@
+dockerをawsで本番運用するメリデメを真面目に考えよう、的な話をされて、
+「確かに。。apiはserverlessに作りたい気持ちあるし。。dockerをawsでオーケストレーションするのってそんなにやりたいってわけじゃないなぁ。。。」
+って思ったのでデプロイは arukas とか now とかで趣味用に実現されればいいや。
+って気持ちになった。
+なのでこのboilerplateは一旦ここまで。
+
 # usage
 ```
 docker-compose up
@@ -18,9 +24,6 @@ rails db:seed_fu RAILS_ENV=development
 を唱える。
 
 # やりたきこと
-- [x] page増やす
-- [x] rails api server をサクッと構築
-- [x] ssr /w fetch
-- [x] docker
-- [x] mysql
-- [ ] awsへのデプロイを考える
+- nextのバージョンあげたい
+- Dockerfileが未完成
+  - キャッシュが上手に活かせてない
