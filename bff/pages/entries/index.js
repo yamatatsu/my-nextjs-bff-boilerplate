@@ -2,8 +2,8 @@ import Link from 'next/link'
 import 'isomorphic-fetch'
 
 export default class extends React.Component {
-  static async getInitialProps ({ req }) {
-    const origin = !!req ? 'http://api_proxy' : 'http://localhost:3000'
+  static getInitialProps ({ req }) {
+    const origin = !!req ? 'http://api:3000' : 'http://localhost:3000'
     return fetch(`${origin}/items`)
       .then(res => res.json())
       .then(items => ({ items }))
